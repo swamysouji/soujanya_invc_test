@@ -30,11 +30,11 @@ public class Testcase {
 	public void launch_browser() throws IOException {
 
 		// This can be used for Windows local run
-		//System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\chromedriver.exe");
 		
 		// For github actions to run on Ubantu
 		//System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/chromedriver");
-		System.setProperty("webdriver.chrome.driver", "/home/runner/work/soujanya_invc_test/chromedriver");
+		//System.setProperty("webdriver.chrome.driver", "/home/runner/work/soujanya_invc_test/chromedriver");
 
 		//ChromeOptions options = new ChromeOptions();
 		//driver = new ChromeDriver(options);
