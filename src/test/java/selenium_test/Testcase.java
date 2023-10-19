@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -35,8 +36,9 @@ public class Testcase {
 		
 		// For github actions to run on Ubantu
 		//System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/chromedriver");
-		
-		driver = new ChromeDriver();
+
+		ChromeOptions options = new ChromeOptions();
+		driver = new ChromeDriver(options);
 		driver.manage().window().maximize();
 		driver.get("http://the-internet.herokuapp.com");
 		
