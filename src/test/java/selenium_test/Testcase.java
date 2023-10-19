@@ -29,6 +29,7 @@ public class Testcase {
 	public void launch_browser() throws IOException {
 
 		// a. Launch Browser
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("http://the-internet.herokuapp.com");
