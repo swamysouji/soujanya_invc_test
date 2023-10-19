@@ -14,4 +14,3 @@ In addition, this also does:
 5. Extent report is used for Report generation
 
 6. Reads the elements from Properties file
-   
