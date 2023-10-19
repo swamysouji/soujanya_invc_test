@@ -29,16 +29,17 @@ public class Testcase {
 	@BeforeTest
 	public void launch_browser() throws IOException {
 
-		// a. Launch Browser
-		
 		// This can be used for Windows local run
-		//System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\chromedriver.exe");
 		
 		// For github actions to run on Ubantu
 		//System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/chromedriver");
 
-		ChromeOptions options = new ChromeOptions();
-		driver = new ChromeDriver(options);
+		//ChromeOptions options = new ChromeOptions();
+		//driver = new ChromeDriver(options);
+		
+		// a. Launch Browser	
+		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("http://the-internet.herokuapp.com");
 		
