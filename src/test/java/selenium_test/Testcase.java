@@ -31,10 +31,10 @@ public class Testcase {
 		// a. Launch Browser
 		
 		// This can be used for Windows local run
-		//System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\chromedriver.exe");
 		
 		// For github actions to run on Ubantu
-		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/chromedriver");
+		//System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/chromedriver");
 		
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
