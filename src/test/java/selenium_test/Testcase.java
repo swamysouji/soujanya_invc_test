@@ -29,32 +29,45 @@ public class Testcase {
 	@BeforeTest
 	public void launch_browser() throws IOException {
 
-		// This can be used for Windows local run
-		//System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\chromedriver.exe");
+		// 'linux' = TRUE  => for Linux on github with Actions
+		// 'linux' = FALSE => for Windows on a local system by downloading the project
+		boolean linux = true;
 		
-		// For github actions to run on Ubantu
-		//System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/chromedriver");
-		//System.setProperty("webdriver.chrome.driver", "/home/runner/work/soujanya_invc_test/chromedriver");
-
-		//ChromeOptions options = new ChromeOptions();
-		//driver = new ChromeDriver(options);
+		String myreports;
+		String mylocator;
 		
 		// a. Launch Browser	
-		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\chromedriver.exe");
-		driver = new ChromeDriver();
+		if (linux)
+		{
+		  myreports = "/reports";
+		  mylocator = "/locators.properties";			
+		  ChromeOptions options = new ChromeOptions();
+		  options.addArguments("--headless");
+		  options.addArguments("--no-sandbox");
+		  options.setBinary("/usr/bin/google-chrome");
+		  driver = new ChromeDriver(options);
+		}
+		else
+		{
+		  myreports = "\\reports";
+		  mylocator = "\\locators.properties";
+		  System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\chromedriver.exe");
+		  driver = new ChromeDriver();
+		}
+		
 		driver.manage().window().maximize();
 		driver.get("http://the-internet.herokuapp.com");
 		
 		// b. setup Reporting
 		report = new ExtentReports();
-		String report_file_path = System.getProperty("user.dir") + "\\reports";
+		String report_file_path = System.getProperty("user.dir") + myreports;
 		ExtentSparkReporter spark_reporter = new ExtentSparkReporter(report_file_path);
 		report.attachReporter(spark_reporter);
 		spark_reporter.config().setReportName("Test report");
 		test = report.createTest("test case");
 		
 		// c. Locator related setup
-		String prop_file_path = System.getProperty("user.dir") + "\\locators.properties";
+		String prop_file_path = System.getProperty("user.dir") + mylocator;
 		System.out.println(prop_file_path);
 		FileInputStream fis = new FileInputStream(prop_file_path);
 		prop = new Properties();
