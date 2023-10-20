@@ -15,12 +15,15 @@ In addition, this also does:
 
 6. Reads the elements from Properties file
 
+7. This implements github Actions to build and run the tests
+   
 NOTE:
-	To run this project on github Actions	- use the project as is
-  (linux = true  => for Linux on github with Actions)
 
   To download the project and run it locally on Windows:
   => update src/test/java/selenium_test/Testcase.java, line 34 with
   linux = false;
   (linux = FALSE => for Windows on a local system by downloading the project)
-  
+
+  To run this project on github Actions	- use the project as is
+  (linux = true  => for Linux on github with Actions)
+
