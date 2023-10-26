@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterTest;
+import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -101,11 +102,12 @@ public class Testcase {
 		int display_count = element_list.size();
 		test.log(Status.INFO, display_count + " elements got added");
 
-		// 4. Verify the number of added elements
-		if (display_count == n)
-			test.log(Status.PASS, "Add/Verify Test succeeded");
+		// 4. Verify the number of added elements 
+		// (assert reports back to the framework which is better than prints)
+		if (n >= 0)
+			Assert.assertEquals(display_count, n);
 		else
-			test.log(Status.FAIL, "Add/Verify Test failed");
+			Assert.assertEquals(display_count, 0);
 	}
 
 	@AfterTest
